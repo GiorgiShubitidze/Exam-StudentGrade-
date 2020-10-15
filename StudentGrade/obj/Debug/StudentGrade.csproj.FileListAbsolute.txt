@@ -1,0 +1,7 @@
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\bin\Debug\StudentGrade.exe
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\bin\Debug\StudentGrade.exe.config
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csproj.CoreCompileInputs.cache
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.exe
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.pdb
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\bin\Debug\StudentGrade.pdb
+C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csprojAssemblyReference.cache
