@@ -27,50 +27,56 @@ namespace StudentGrade
                 new Subject(){SubjectId=4,Name = "C"},
                 new Subject(){SubjectId=5,Name = "OOP"},
             };
-
             string filecontents = File.ReadAllText("StudentPoint.csv");
-            var lines = filecontents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            var data = new List<StudentGrade>();
-            StudentGrade my = new StudentGrade();
-            Student std = new Student();
-            foreach (var line in lines)
-            {
-                var split = line.Split(',');
-                // split.Skip(3);
+            var lines = filecontents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Skip(1);
 
-                my = new StudentGrade();
-                my.StudentCsvId = Convert.ToInt32(split[0]);
-                my.SubjectCsvId = Convert.ToInt32(split[1]);
-                my.PointCsv = Convert.ToInt32(split[2]);
-                // data.Add(line.Split(','));
-                // var x = line.Split(',');
-                data.Add(my);
-            }
-            foreach (var item in data)
-            {
-                //var stName = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
-               // var sbName = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
-                var res = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
-                var res1 = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
-                if (res == null || res1 == null) Console.WriteLine($"Student Name = {res} ,Student Id = {item.StudentCsvId} " +
-                    $", Subject Name  = {res1}  Subject = {item.SubjectCsvId} , Point = {item.PointCsv} , Status - Not Imported ");
-                if (res != null && res1 != null)
-                {
-
-                    item.StudentId = item.StudentCsvId;
-                    item.SubjectId = item.SubjectCsvId;
-                    item.Point = item.PointCsv;
-                    
-                    //if (item.StudentId==0)
-                    //{
-                    //    Console.WriteLine($"Not imported {item.CsvStudentId}");
-                    //}
-
-                    Console.WriteLine($" Student Name = {res} ,Student Id = {item.StudentId} ,Subject Name =  {res1} ,Subject = {item.SubjectId} , Point = {item.Point} , Status - Imported ");
-                }
-            }
-
-            Console.ReadLine();
         }
     }
+
+
+   
 }
+//            var data = new List<StudentGrade>();
+//            StudentGrade my = new StudentGrade();
+//            Student std = new Student();
+//            foreach (var line in lines)
+//            {
+//                var split = line.Split(',');
+//                // split.Skip(3);
+
+//                my = new StudentGrade();
+//                my.StudentCsvId = Convert.ToInt32(split[0]);
+//                my.SubjectCsvId = Convert.ToInt32(split[1]);
+//                my.PointCsv = Convert.ToInt32(split[2]);
+//                // data.Add(line.Split(','));
+//                // var x = line.Split(',');
+//                data.Add(my);
+//            }
+//            foreach (var item in data)
+//            {
+//                //var stName = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
+//               // var sbName = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
+//                var res = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
+//                var res1 = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
+//                if (res == null || res1 == null) Console.WriteLine($"Student Name = {res} ,Student Id = {item.StudentCsvId} " +
+//                    $", Subject Name  = {res1}  Subject = {item.SubjectCsvId} , Point = {item.PointCsv} , Status - Not Imported ");
+//                if (res != null && res1 != null)
+//                {
+
+//                    item.StudentId = item.StudentCsvId;
+//                    item.SubjectId = item.SubjectCsvId;
+//                    item.Point = item.PointCsv;
+
+//                    //if (item.StudentId==0)
+//                    //{
+//                    //    Console.WriteLine($"Not imported {item.CsvStudentId}");
+//                    //}
+
+//                    Console.WriteLine($" Student Name = {res} ,Student Id = {item.StudentId} ,Subject Name =  {res1} ,Subject = {item.SubjectId} , Point = {item.Point} , Status - Imported ");
+//                }
+//            }
+
+//            Console.ReadLine();
+//        }
+//    }
+//}

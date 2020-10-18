@@ -5,3 +5,15 @@ C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\Stud
 C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.pdb
 C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\bin\Debug\StudentGrade.pdb
 C:\Users\Giorgi.Shubitidze\source\repos\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csprojAssemblyReference.cache
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\StudentGrade.exe.config
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\StudentGrade.exe
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\StudentGrade.pdb
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csproj.CoreCompileInputs.cache
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\obj\Debug\StudentGrade.exe
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\obj\Debug\StudentGrade.pdb
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\EntityFramework.dll
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\EntityFramework.xml
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csproj.CopyComplete
+C:\Users\gio1.admin\Desktop\StudentGrade\StudentGrade\obj\Debug\StudentGrade.csprojAssemblyReference.cache

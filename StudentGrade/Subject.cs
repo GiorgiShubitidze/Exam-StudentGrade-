@@ -10,9 +10,7 @@ namespace StudentGrade
     {
         public int SubjectId { get; set; }
         public string Name { get; set; }
-        public override string ToString()
-        {
-            return Name;
-        }
+        public ICollection<Student> Students { get; set; }
+        
     }
 }
