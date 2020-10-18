@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class foo : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -15,10 +15,6 @@
                         StudentId = c.Int(nullable: false),
                         SubjectId = c.Int(nullable: false),
                         Point = c.Int(nullable: false),
-                        StudentCsvId = c.Int(nullable: false),
-                        SubjectCsvId = c.Int(nullable: false),
-                        PointCsv = c.Int(nullable: false),
-                        StudentName = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Students", t => t.StudentId, cascadeDelete: true)

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Data.Entity;
 
 namespace StudentGrade
 {
@@ -11,72 +11,77 @@ namespace StudentGrade
     {
         static void Main()
         {
-            var student = new List<Student>()
-            {
-                new Student(){StudentId=1,Name="Gio"},
-                new Student(){StudentId=2,Name="Nika"},
-                new Student(){StudentId=3,Name="Temo"},
-                new Student(){StudentId=4,Name="Ika"},
-                new Student(){StudentId=5,Name="Beka"},   //1,2,0
-            };
-            var subject = new List<Subject>()
-            {
-                new Subject(){SubjectId=1,Name=".Net"},
-                new Subject(){SubjectId=2,Name="Entity FrameWork"},
-                new Subject(){SubjectId=34241,Name = "C++"},
-                new Subject(){SubjectId=4,Name = "C"},
-                new Subject(){SubjectId=5,Name = "OOP"},
-            };
+
             string filecontents = File.ReadAllText("StudentPoint.csv");
             var lines = filecontents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Skip(1);
+            // [0] -> 1,1,5
+            // [1] -> 2,5,8
 
+            var students = new List<Student>();
+            var subjects = new List<Subject>();
+
+            using (var db = new GradeDbContext())
+            {
+                students = db.Students.ToList();
+                subjects = db.Subjects.ToList();
+            }
+
+            var studentInfosCsv = new List<StudentInfoCsv>();
+            foreach (var line in lines)
+            {
+                var studentInfoCsv = new StudentInfoCsv();
+                var splittedLine = line.Split(',');
+                studentInfoCsv.StudentIdCsv = Convert.ToInt32(splittedLine[0]);
+                studentInfoCsv.SubjectIdCsv = Convert.ToInt32(splittedLine[1]);
+                studentInfoCsv.PointCsv = Convert.ToInt32(splittedLine[2]);
+
+                studentInfosCsv.Add(studentInfoCsv);
+            }
+
+            var notFoundStudents = new List<int>();
+            var notFoundSubjects = new List<int>();
+
+            using (var db = new GradeDbContext())
+            {
+
+                foreach (var studentInfo in studentInfosCsv)
+                {
+                    if (students.FirstOrDefault(s => s.StudentId == studentInfo.StudentIdCsv) == null)
+                    {
+                        notFoundStudents.Add(studentInfo.StudentIdCsv);
+                    }
+                    else if (subjects.FirstOrDefault(s => s.SubjectId == studentInfo.SubjectIdCsv) == null)
+                    {
+                        notFoundSubjects.Add(studentInfo.SubjectIdCsv);
+                    }
+                    else
+                    {
+                        var studentGrade = new StudentGrade
+                        {
+                            Point = studentInfo.PointCsv,
+                            StudentId = studentInfo.StudentIdCsv,
+                            SubjectId = studentInfo.SubjectIdCsv
+                        };
+
+                        db.Grades.Add(studentGrade);
+                    }
+                }
+
+                db.SaveChanges();
+            }
+
+            foreach (var id in notFoundStudents)
+            {
+                Console.WriteLine("Not found student id: " + id);
+            }
+
+            foreach (var id in notFoundSubjects)
+            {
+                Console.WriteLine("Not found subject id: " + id);
+            }
         }
     }
 
 
-   
+
 }
-//            var data = new List<StudentGrade>();
-//            StudentGrade my = new StudentGrade();
-//            Student std = new Student();
-//            foreach (var line in lines)
-//            {
-//                var split = line.Split(',');
-//                // split.Skip(3);
-
-//                my = new StudentGrade();
-//                my.StudentCsvId = Convert.ToInt32(split[0]);
-//                my.SubjectCsvId = Convert.ToInt32(split[1]);
-//                my.PointCsv = Convert.ToInt32(split[2]);
-//                // data.Add(line.Split(','));
-//                // var x = line.Split(',');
-//                data.Add(my);
-//            }
-//            foreach (var item in data)
-//            {
-//                //var stName = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
-//               // var sbName = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
-//                var res = student.Where(a => a.StudentId == item.StudentCsvId).FirstOrDefault();
-//                var res1 = subject.Where(a => a.SubjectId == item.SubjectCsvId).FirstOrDefault();
-//                if (res == null || res1 == null) Console.WriteLine($"Student Name = {res} ,Student Id = {item.StudentCsvId} " +
-//                    $", Subject Name  = {res1}  Subject = {item.SubjectCsvId} , Point = {item.PointCsv} , Status - Not Imported ");
-//                if (res != null && res1 != null)
-//                {
-
-//                    item.StudentId = item.StudentCsvId;
-//                    item.SubjectId = item.SubjectCsvId;
-//                    item.Point = item.PointCsv;
-
-//                    //if (item.StudentId==0)
-//                    //{
-//                    //    Console.WriteLine($"Not imported {item.CsvStudentId}");
-//                    //}
-
-//                    Console.WriteLine($" Student Name = {res} ,Student Id = {item.StudentId} ,Subject Name =  {res1} ,Subject = {item.SubjectId} , Point = {item.Point} , Status - Imported ");
-//                }
-//            }
-
-//            Console.ReadLine();
-//        }
-//    }
-//}

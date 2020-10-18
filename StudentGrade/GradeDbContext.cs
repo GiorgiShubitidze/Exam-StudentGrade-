@@ -4,7 +4,7 @@ namespace StudentGrade
     using System.Data.Entity;
     using System.Linq;
 
-    public class Model1 : DbContext
+    public class GradeDbContext : DbContext
     {
         // Your context has been configured to use a 'Model1' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -12,8 +12,8 @@ namespace StudentGrade
         // 
         // If you wish to target a different database and/or database provider, modify the 'Model1' 
         // connection string in the application configuration file.
-        public Model1()
-            : base("name=Model1")
+        public GradeDbContext()
+            : base("name=GradeDbContext")
         {
         }
 
@@ -23,6 +23,7 @@ namespace StudentGrade
          public DbSet<Student> Students { get; set; }
          public DbSet<Subject> Subjects { get; set; }
          public DbSet<StudentGrade> Grades { get; set; }
+        //public DbSet<StudentInfoCsv> studentInfoCsvs { get; set; }
     }
 
     //public class MyEntity
